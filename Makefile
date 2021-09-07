@@ -3,10 +3,10 @@ default: run
 id_rsa:
 	ssh-keygen -P "" -t rsa -f id_rsa
 
-build:
+sshhoneypot: sshhoneypot.go
 	go build
 
-run: build id_rsa
+run: sshhoneypot id_rsa
 	./sshhoneypot id_rsa 0.0.0.0:13222 |& tee -a log
 
 u:
