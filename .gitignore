@@ -1,3 +1,8 @@
+sshhoneypot
+id_rsa
+id_rsa.pub
+log
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
