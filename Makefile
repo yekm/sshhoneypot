@@ -11,3 +11,12 @@ run: sshhoneypot id_rsa
 
 u:
 	cat log | cut -f2 -d- | cut -f2 -d' ' | sort -u
+
+ggeoip: ggeoip.c
+	$(CC) -lGeoIP $< -o $@
+
+ip:
+	cat log | cut -f3 -d' ' | cut -f1 -d':' | sort -u
+
+counties: ggeoip
+	make ip | xargs -n1 ./ggeoip /usr/share/GeoIP/GeoIPCity.dat | cut -f 2 | sort | uniq -c | sort -rn
